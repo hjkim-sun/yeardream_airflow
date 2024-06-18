@@ -18,7 +18,7 @@ class SeoulApiDateColumnSensor(BaseSensorOperator):
         '''
         super().__init__(**kwargs)
         self.http_conn_id = 'openapi.seoul.go.kr'
-        self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/' + dataset_nm + '/1/100'  # 100건만 추출
+        self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/' + dataset_nm + '/1/5'  # 5건만 추출
         self.base_dt_col = base_dt_col
         self.day_off = day_off
 
@@ -50,6 +50,7 @@ class SeoulApiDateColumnSensor(BaseSensorOperator):
 
         if last_date >= search_ymd:
             self.log.info(f'생성 확인(기준 날짜: {search_ymd} / API Last 날짜: {last_date})')
+            self.log.info(f'row_data: {row_data}')
             return True
         else:
             self.log.info(f'Update 미완료 (기준 날짜: {search_ymd} / API Last 날짜:{last_date})')
