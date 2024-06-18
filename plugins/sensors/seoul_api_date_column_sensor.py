@@ -7,7 +7,7 @@ from airflow.hooks.base import BaseHook
 2. API 사용시 그 날짜 컬럼으로 ORDER BY DESC 되어 가져온다는 가정하에 사용 가능
 '''
 
-class SeoulApiDateSensor(BaseSensorOperator):
+class SeoulApiDateColumnSensor(BaseSensorOperator):
     template_fields = ('endpoint',)
 
     def __init__(self, dataset_nm, base_dt_col, day_off=-1, **kwargs):
